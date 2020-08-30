@@ -120,26 +120,65 @@ int RBinarySearch(struct Array *arr, int key, int l, int h){
     return -1;
 };
 
-int Max(struct Array *arr, int s){
-  
-
-    int i = 0;
-    
-    for(i=s; i<arr->length; i++){
-        if(arr->A[s] < arr->A[i]){
-            s = i;
-            return Max(arr, s);
+int Max(struct Array *arr){
+    int i;
+    int max = arr->A[0];
+    for(i=1; i<arr->length; i++){
+        if(arr->A[i]> max){
+            max = arr->A[i];
         }
     }
-    
-    return s;
+    return max;
 };
+
+int Min(struct Array *arr){
+    int i;
+    int min = arr->A[0];
+    for(i=1;i<arr->length;i++){
+        if(arr->A[i]<min){
+            min = arr->A[i];
+        }
+    }
+    return min;
+};
+
+int Sum(struct Array *arr){
+    int i;
+    int sum = arr->A[0];
+    for(i=1;i<arr->length;i++){
+        sum += arr->A[i];
+    }
+    
+    return sum;
+}
+
+int Get(struct Array arr, int index){
+    if(index>=0 && index <arr.length){
+        return arr.A[index];
+    }
+    return -1;
+}
+
+void Set(struct Array *arr, int index, int x){
+    if(index>=0 && index<arr->length){
+        arr->A[index] = x;
+    }
+}
+
+int Average(struct Array *arr){
+    int i;
+    int total = 0;
+    for(i=0;i<arr->length; i++){
+        total += arr->A[i];
+    }
+    return total/arr->length;
+}
 
 int main(int argc, const char * argv[]) {
   
-    struct Array arr = {{2,3,9,5,6}, 10, 5};
+    struct Array arr = {{2,3,4,5,6}, 10, 5};
    
-    printf("%d\n", Max(&arr, 0));
+    printf("%d\n", Average(&arr));
     Display(arr);
     
     return 0;
