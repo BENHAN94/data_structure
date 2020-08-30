@@ -26,7 +26,7 @@ void Display(struct Array arr){
 };
 
 void Append(struct Array *arr, int x){
-   
+  
     if(arr->length<arr->size){
         arr->A[arr->length++] = x;
     }
@@ -120,11 +120,26 @@ int RBinarySearch(struct Array *arr, int key, int l, int h){
     return -1;
 };
 
+int Max(struct Array *arr, int s){
+  
+
+    int i = 0;
+    
+    for(i=s; i<arr->length; i++){
+        if(arr->A[s] < arr->A[i]){
+            s = i;
+            return Max(arr, s);
+        }
+    }
+    
+    return s;
+};
+
 int main(int argc, const char * argv[]) {
   
-    struct Array arr = {{2,3,4,5,6}, 10, 5};
+    struct Array arr = {{2,3,9,5,6}, 10, 5};
    
-    printf("%d\n", RBinarySearch(&arr, 9, 0, arr.length));
+    printf("%d\n", Max(&arr, 0));
     Display(arr);
     
     return 0;
