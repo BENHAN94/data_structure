@@ -95,6 +95,8 @@ int BinarySearch(struct Array *arr, int key){
         l = m+1;
     } else{
         h = m -1;
+        
+        
     }
     }
   
